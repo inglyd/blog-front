@@ -1,4 +1,4 @@
-export interface UsuarioLogin {
+export default interface UsuarioLogin {
     id: number;
     nome: string;
     usuario: string;
@@ -6,3 +6,5 @@ export interface UsuarioLogin {
     senha: string;
     token: string;
 }
+
+
