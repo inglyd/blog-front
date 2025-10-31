@@ -31,7 +31,11 @@ function Footer() {
     );
   }
 
-  return <>{component}</>;
+  return (
+  <>
+  { component }
+  </>
+  );
 }
 
 export default Footer;

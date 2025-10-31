@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../assets/utils/ToastAlerta";
 
 function Cadastro() {
   // navegação do usuário (função nativa do react-router-dom), sem cliques em links
@@ -11,7 +12,7 @@ function Cadastro() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // estado que armazena o valor do campo "confirmar senha"
   const [confirmarSenha, setConfirmarSenha] = useState<string>("");
- // estado que gerencia os dados do usuário (digitados no formulário de cadastro)
+  // estado que gerencia os dados do usuário (digitados no formulário de cadastro)
   const [usuario, setUsuario] = useState<Usuario>({
     id: 0,
     nome: "",
@@ -19,7 +20,7 @@ function Cadastro() {
     senha: "",
     foto: "",
   });
-// observa o estado do usuário, se o id for diferente de 0, redireciona para a página de login
+  // observa o estado do usuário, se o id for diferente de 0, redireciona para a página de login
   useEffect(() => {
     if (usuario.id !== 0) {
       retornar();
@@ -49,13 +50,14 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-        alert("Usuário cadastrado com sucesso!");
+        ToastAlerta("Usuário foi cadastrado com sucesso!", "sucesso");
       } catch (error) {
-        alert("Erro ao cadastrar o usuário!");
+        ToastAlerta("Erro ao cadastrar o usuário!", "erro");
       }
     } else {
-      alert(
-        "Dados do usuário inconsistentes! Verifique as informações do cadastro."
+      ToastAlerta(
+        "Dados do usuário inconsistentes! Verifique as informações do cadastro.",
+        "info"
       );
       setUsuario({ ...usuario, senha: "" });
       setConfirmarSenha("");
@@ -162,7 +164,11 @@ function Cadastro() {
                              hover:bg-indigo-900 w-1/2 py-2
                              flex justify-center"
             >
-              {isLoading ? <ClipLoader color="#fff" size={24} /> : <span>Cadastrar</span> }
+              {isLoading ? (
+                <ClipLoader color="#fff" size={24} />
+              ) : (
+                <span>Cadastrar</span>
+              )}
             </button>
           </div>
         </form>

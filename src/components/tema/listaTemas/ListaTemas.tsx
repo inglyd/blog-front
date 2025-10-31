@@ -5,6 +5,7 @@ import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../assets/contexts/AuthContext";
 import CardTema from "../cardTema/CardTema";
 import { buscar } from "../../../services/Service";
+import { ToastAlerta } from "../../../assets/utils/ToastAlerta";
 
 function ListaTemas() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function ListaTemas() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+      ToastAlerta("Você precisa estar logado", "info");
       navigate("/");
     }
   }, [token]);
