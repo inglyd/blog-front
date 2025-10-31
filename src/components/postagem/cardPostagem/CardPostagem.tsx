@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type Postagem from "../../../models/Postagem";
 
 interface CardPostagensProps {
-    postagem: Postagem
+  postagem: Postagem;
 }
 
 /* Atribuição por Desestruturação, acessa as props do obj tema diretamente, sem precisar referenciar o objeto completo */
@@ -30,10 +30,13 @@ function CardPostagem({ postagem }: CardPostagensProps) {
           <h4 className="text-lg font-semibold uppercase">{postagem.titulo}</h4>
           <p>{postagem.texto}</p>
           <p>Tema: {postagem.tema?.descricao}</p>
-          <p>Data: {new Intl.DateTimeFormat("pt-BR", {
-            dateStyle: 'full',
-            timeStyle: 'medium',
-          }).format(new Date(postagem.data))}</p>
+          <p>
+            Data:{" "}
+            {new Intl.DateTimeFormat("pt-BR", {
+              dateStyle: "full",
+              timeStyle: "medium",
+            }).format(new Date(postagem.data))}
+          </p>
         </div>
       </div>
       <div className="flex">
@@ -45,7 +48,7 @@ function CardPostagem({ postagem }: CardPostagensProps) {
           <button>Editar</button>
         </Link>
         <Link
-          to=""
+          to={`/deletarpostagem/${postagem.id}`}
           className="text-white bg-red-400 
                     hover:bg-red-700 w-full flex items-center justify-center"
         >

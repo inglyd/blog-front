@@ -10,6 +10,7 @@ import FormTema from "./components/tema/formTema/FormTema";
 import DeletarTema from "./components/tema/deletarTema/DeletarTema";
 import ListaPostagens from "./components/postagem/listaPostagens/ListaPostagens";
 import FormPostagem from "./components/postagem/formPostagem/FormPostagens";
+import DeletarPostagem from "./components/postagem/deletarPostagem/DeletarPostagem";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/postagens" element={<ListaPostagens />} />
               <Route path="/cadastrarpostagem" element={<FormPostagem />} />
               <Route path="/editarpostagem/:id" element={<FormPostagem />} />
+              <Route path="/deletarpostagem/:id" element={<DeletarPostagem />} />
             </Routes>
           </div>
           <Footer />
