@@ -33,7 +33,7 @@ function DeletarPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta('Você precisa estar logado', 'info')
+      ToastAlerta("Você precisa estar logado", "info");
       navigate("/");
     }
   }, [token]);
@@ -54,7 +54,7 @@ function DeletarPostagem() {
         },
       });
 
-      ToastAlerta("Postagem apagada com sucesso", "sucesso")
+      ToastAlerta("Postagem apagada com sucesso", "sucesso");
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();

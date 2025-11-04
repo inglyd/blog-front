@@ -10,7 +10,7 @@ function Navbar() {
 
   function logout() {
     handleLogout();
-    ToastAlerta('O Usuário foi desconectado com sucesso!', 'info')
+    ToastAlerta("O Usuário foi desconectado com sucesso!", "info");
     navigate("/");
   }
 
@@ -18,10 +18,10 @@ function Navbar() {
 
   if (usuario.token !== "") {
     component = (
-      <div className="w-full flex justify-center py-4 bg-indigo-900 text-white">
+      <nav className="w-full flex justify-center py-4 bg-indigo-700 text-white">
         <div className="container flex justify-between text-lg mx-8">
           <Link to="/home" className="font-bold text-2xl">
-            Blog Pessoal
+            Blog de Crônicas
           </Link>
           <div className="flex gap-4">
             <Link to="/postagens" className="hover:underline">
@@ -41,11 +41,11 @@ function Navbar() {
             </Link>
           </div>
         </div>
-      </div>
+      </nav>
     );
   }
 
-  return <>{ component }</>;
+  return <>{component}</>;
 }
 
 export default Navbar;
